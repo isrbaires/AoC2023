@@ -1,0 +1,45 @@
+def DOUBLE(multiplier, x):
+  while multiplier > 1:
+    x = x * 2
+    multiplier = multiplier-1
+  print(x)
+  return x
+
+def SCRATCH(line):
+    multiplier = 0
+    points = 0
+    
+    #remove line breaks
+    line = line.replace("\n","")
+    
+    #split the lists into two and turn strings to list
+    winningNumbers=  line[line.index(":")+2:line.index("|")-1]
+    myNumbers= line[line.index("|")+2:]
+    winningNumbers = winningNumbers.split(" ")
+    myNumbers = myNumbers.split(" ")
+
+    for winningNumber in winningNumbers:
+      if winningNumber in myNumbers:
+        print(myNumbers)
+        multiplier += multiplier + 1
+        #print("n is " + str(multiplier))
+
+    if multiplier > 0:
+      points = 1
+      points = DOUBLE(multiplier,points)
+        
+      
+    return points
+
+
+def main():
+  points = 0
+  with open("data.txt", "r") as file:
+    for line in file:
+      print("New Card")
+      #print(SCRATCH(line))
+      points = points + SCRATCH(line)
+      
+
+if __name__=="__main__": 
+    main()
