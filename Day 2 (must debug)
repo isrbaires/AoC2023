@@ -1,0 +1,47 @@
+sum = 0
+#12 red cubes, 13 green cubes, and 14 blue cubes
+redLimit = 12
+greenLimit = 13
+blueLimit = 14
+
+
+#open file
+with open("data.txt", "r") as file:
+  for line in file:
+    valid =  True
+    #get game ID
+    id =  line[line.index(" ")+1:line.index(":")]
+    #strip Game ID and colon from line
+    line = line[line.index(":")+2:]
+    line = line.replace(";",",")
+    line = line.replace("\n","")
+    line = line.split(", ")
+    for item in line:
+      if "red" in item:
+        item = item[:item.index(" ")]
+        if int(item) > redLimit:
+          print("Game ID: " + id + " - Red cubes exceeded limit")
+          valid = False
+      if "blue" in item:
+        item = item[:item.index(" ")]
+        if int(item) > blueLimit:
+          print("Game ID: " + id + " - Blue cubes exceeded limit")
+          valid = False
+      if "green" in item:
+        item = item[:item.index(" ")]
+        if int(item) > greenLimit:
+          print("Game ID: " + id + " - Green cubes exceeded limit")
+          valid = False
+    if(valid):  
+      sum += int(id)
+
+print(sum)
+
+
+    
+
+
+
+
+    
+  
